@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: rodrigofranzoi/shared-buddy
+          path: Vendor/shared-buddy
+      - name: Generate project
+        run: |
+          brew install xcodegen || true
+          xcodegen generate
+          ./scripts/link-firebase.sh
+      - name: Unit tests
+        run: xcodebuild -scheme PaintBuddy -destination 'platform=macOS' test CODE_SIGNING_ALLOWED=NO -only-testing:PaintBuddyTests
+      - name: UI smoke tests
+        run: xcodebuild -scheme PaintBuddy -destination 'platform=macOS' test CODE_SIGNING_ALLOWED=NO -only-testing:PaintBuddyUITests
+        continue-on-error: true

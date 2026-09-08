@@ -1,0 +1,67 @@
+name: PaintBuddy
+options:
+  bundleIdPrefix: com.buddy
+  deploymentTarget:
+    macOS: "13.0"
+  createIntermediateGroups: true
+settings:
+  BASE_SDK: macosx
+  SWIFT_VERSION: "5.9"
+  MACOSX_DEPLOYMENT_TARGET: "13.0"
+packages:
+  shared-buddy:
+    path: Vendor/shared-buddy
+targets:
+  PaintBuddy:
+    type: application
+    platform: macOS
+    sources:
+      - path: PaintBuddy
+        excludes:
+          - Resources/GoogleService-Info.plist
+    resources:
+      - path: PaintBuddy/Resources/Localizable.xcstrings
+    dependencies:
+      - package: shared-buddy
+        product: BuddyCore
+      - package: shared-buddy
+        product: BuddyUI
+      - package: shared-buddy
+        product: BuddyFirebase
+      - package: shared-buddy
+        product: BuddyLocalization
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.buddy.paint
+      INFOPLIST_FILE: PaintBuddy/Info.plist
+      GENERATE_INFOPLIST_FILE: false
+      CODE_SIGN_ENTITLEMENTS: PaintBuddy/PaintBuddy.entitlements
+      LD_RUNPATH_SEARCH_PATHS: "@executable_path/../Frameworks"
+      ENABLE_HARDENED_RUNTIME: true
+      ENABLE_TESTABILITY: true
+      OTHER_LDFLAGS: "$(inherited) -ObjC"
+    scheme:
+      testTargets:
+        - PaintBuddyTests
+        - PaintBuddyUITests
+  PaintBuddyTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - PaintBuddyTests
+    dependencies:
+      - target: PaintBuddy
+      - package: shared-buddy
+        product: BuddyTesting
+    settings:
+      GENERATE_INFOPLIST_FILE: true
+      PRODUCT_BUNDLE_IDENTIFIER: com.buddy.paint.tests
+  PaintBuddyUITests:
+    type: bundle.ui-testing
+    platform: macOS
+    sources:
+      - PaintBuddyUITests
+    dependencies:
+      - target: PaintBuddy
+    settings:
+      GENERATE_INFOPLIST_FILE: true
+      PRODUCT_BUNDLE_IDENTIFIER: com.buddy.paint.uitests

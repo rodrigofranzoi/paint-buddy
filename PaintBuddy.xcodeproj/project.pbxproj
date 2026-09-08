@@ -1,0 +1,637 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1EA03EEE1335F069A269C977 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0154D04ED192ED82F3FC530 /* Assets.xcassets */; };
+		2B0BDF8B1CD99A5986E403DB /* PaintBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CA6856471BDCC2BE634A7D /* PaintBuddyApp.swift */; };
+		2FD952E845139D3CBAACAB5B /* BuddyCore in Frameworks */ = {isa = PBXBuildFile; productRef = 1D2F15CFBE9DB394DE8FDCFF /* BuddyCore */; };
+		44811439BB6DA792F3F9A36C /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2597A4261226980E129E58F1 /* MenuBarView.swift */; };
+		45647D7FB9813E393C722F36 /* BuddyFirebase in Frameworks */ = {isa = PBXBuildFile; productRef = BDA702773DA9E8C3E211B829 /* BuddyFirebase */; };
+		6CF735771997396BEE9B2787 /* BuddyLocalization in Frameworks */ = {isa = PBXBuildFile; productRef = AC41B16345534C7DC6E22563 /* BuddyLocalization */; };
+		7D29BD48F0A6A6B4C7681AF8 /* ColorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B02EB46DCD9343529F0898 /* ColorStore.swift */; };
+		8E1F5EE8E2F2DAB383E07216 /* BuddyUI in Frameworks */ = {isa = PBXBuildFile; productRef = D11D1B3C3BC2B5E1597E2880 /* BuddyUI */; };
+		ACA50076AC537786CC75033D /* BuddyTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 13199191E3C4CB66F7CD2C1E /* BuddyTesting */; };
+		ACF7B2BE04BB9BEBEA5A9682 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38337E9A8D9C557CABB6AD10 /* SettingsView.swift */; };
+		B53E5A8A12697D03DF45A191 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 78219D60D16C0F484FC62495 /* Localizable.xcstrings */; };
+		CC6E0C9E7CA44E3E1320FF78 /* ColorStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585779114ED4D6FDC2F045E1 /* ColorStoreTests.swift */; };
+		CE8D76A41D3976754DD71EC1 /* ColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825E3CDE81372B22B4F0AE8 /* ColorPickerController.swift */; };
+		EADE6B316D47D90B3F086A5B /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4BF4D82F0D1EF29C606FA1 /* DashboardView.swift */; };
+		F6D2949836204FD50176E6B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F8F64A378A0BF705278F8 /* AppDelegate.swift */; };
+		F754590925F31C405AB478B1 /* PaintBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D7C3ADF34C7A6320F3518A /* PaintBuddyUITests.swift */; };
+		F84E23B5C92B229422BACD4F /* FloatingHistoryPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562676BBE00952E1EFCF9577 /* FloatingHistoryPanelController.swift */; };
+		FB20689DA65A90A8B70D84AA /* PaintMarketingCaptureRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BC35398F538053C11B423 /* PaintMarketingCaptureRunner.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		08A9D3A2ADF28D0A915C139B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94F1B9986B7BDA835DE63A98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5AF530524224DA09D327F31C;
+			remoteInfo = PaintBuddy;
+		};
+		A19F3F7E32C3A83BF9A99D52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94F1B9986B7BDA835DE63A98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5AF530524224DA09D327F31C;
+			remoteInfo = PaintBuddy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2597A4261226980E129E58F1 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		38337E9A8D9C557CABB6AD10 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		562676BBE00952E1EFCF9577 /* FloatingHistoryPanelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingHistoryPanelController.swift; sourceTree = "<group>"; };
+		585779114ED4D6FDC2F045E1 /* ColorStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStoreTests.swift; sourceTree = "<group>"; };
+		5E6792EEFF5B78341D326E59 /* PaintBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaintBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		64CA6856471BDCC2BE634A7D /* PaintBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintBuddyApp.swift; sourceTree = "<group>"; };
+		6FBDAF99977B46961DBFB3CC /* PaintBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PaintBuddy.entitlements; sourceTree = "<group>"; };
+		78219D60D16C0F484FC62495 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		78B02EB46DCD9343529F0898 /* ColorStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStore.swift; sourceTree = "<group>"; };
+		7D588A72A1D83DC6FBE7B612 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		89BB66786B679ADF2B7D9B6A /* PaintBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaintBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		89D7C3ADF34C7A6320F3518A /* PaintBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintBuddyUITests.swift; sourceTree = "<group>"; };
+		AD4BF4D82F0D1EF29C606FA1 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		B825E3CDE81372B22B4F0AE8 /* ColorPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerController.swift; sourceTree = "<group>"; };
+		C8EF20B02AA5A68C951F1C0D /* PaintBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaintBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2DBCC7150C353F668498B50 /* shared-buddy */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "shared-buddy"; path = "Vendor/shared-buddy"; sourceTree = SOURCE_ROOT; };
+		E85F8F64A378A0BF705278F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F0154D04ED192ED82F3FC530 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FB1BC35398F538053C11B423 /* PaintMarketingCaptureRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintMarketingCaptureRunner.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9799A3F22F7F601707254550 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FD952E845139D3CBAACAB5B /* BuddyCore in Frameworks */,
+				8E1F5EE8E2F2DAB383E07216 /* BuddyUI in Frameworks */,
+				45647D7FB9813E393C722F36 /* BuddyFirebase in Frameworks */,
+				6CF735771997396BEE9B2787 /* BuddyLocalization in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0E700E9970EB169DB7A0B6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACA50076AC537786CC75033D /* BuddyTesting in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		044F50969C7D0BBFF4255B96 /* PaintBuddyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				89D7C3ADF34C7A6320F3518A /* PaintBuddyUITests.swift */,
+			);
+			path = PaintBuddyUITests;
+			sourceTree = "<group>";
+		};
+		1A725EEAD7E9F9ADD7AA3333 = {
+			isa = PBXGroup;
+			children = (
+				54E16560351CF2BA61CB1D8C /* Packages */,
+				931E6F16F5EA7998FD639E6A /* PaintBuddy */,
+				2A725D7DA86F0842FB6CAFEF /* PaintBuddyTests */,
+				044F50969C7D0BBFF4255B96 /* PaintBuddyUITests */,
+				D83E97EF1E01DFD968DBFB4A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2A725D7DA86F0842FB6CAFEF /* PaintBuddyTests */ = {
+			isa = PBXGroup;
+			children = (
+				585779114ED4D6FDC2F045E1 /* ColorStoreTests.swift */,
+			);
+			path = PaintBuddyTests;
+			sourceTree = "<group>";
+		};
+		2CE73B8C2E9A1339E24D6083 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				78219D60D16C0F484FC62495 /* Localizable.xcstrings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		54E16560351CF2BA61CB1D8C /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				D2DBCC7150C353F668498B50 /* shared-buddy */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		931E6F16F5EA7998FD639E6A /* PaintBuddy */ = {
+			isa = PBXGroup;
+			children = (
+				E85F8F64A378A0BF705278F8 /* AppDelegate.swift */,
+				F0154D04ED192ED82F3FC530 /* Assets.xcassets */,
+				B825E3CDE81372B22B4F0AE8 /* ColorPickerController.swift */,
+				78B02EB46DCD9343529F0898 /* ColorStore.swift */,
+				AD4BF4D82F0D1EF29C606FA1 /* DashboardView.swift */,
+				562676BBE00952E1EFCF9577 /* FloatingHistoryPanelController.swift */,
+				7D588A72A1D83DC6FBE7B612 /* Info.plist */,
+				2597A4261226980E129E58F1 /* MenuBarView.swift */,
+				6FBDAF99977B46961DBFB3CC /* PaintBuddy.entitlements */,
+				64CA6856471BDCC2BE634A7D /* PaintBuddyApp.swift */,
+				FB1BC35398F538053C11B423 /* PaintMarketingCaptureRunner.swift */,
+				38337E9A8D9C557CABB6AD10 /* SettingsView.swift */,
+				2CE73B8C2E9A1339E24D6083 /* Resources */,
+			);
+			path = PaintBuddy;
+			sourceTree = "<group>";
+		};
+		D83E97EF1E01DFD968DBFB4A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C8EF20B02AA5A68C951F1C0D /* PaintBuddy.app */,
+				89BB66786B679ADF2B7D9B6A /* PaintBuddyTests.xctest */,
+				5E6792EEFF5B78341D326E59 /* PaintBuddyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5AF530524224DA09D327F31C /* PaintBuddy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 26ED379723A493E8D053DDA1 /* Build configuration list for PBXNativeTarget "PaintBuddy" */;
+			buildPhases = (
+				0D30D3D138388A565B8F1D73 /* Sources */,
+				6D0A16513A2C677552F90C21 /* Resources */,
+				9799A3F22F7F601707254550 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PaintBuddy;
+			packageProductDependencies = (
+				1D2F15CFBE9DB394DE8FDCFF /* BuddyCore */,
+				D11D1B3C3BC2B5E1597E2880 /* BuddyUI */,
+				BDA702773DA9E8C3E211B829 /* BuddyFirebase */,
+				AC41B16345534C7DC6E22563 /* BuddyLocalization */,
+			);
+			productName = PaintBuddy;
+			productReference = C8EF20B02AA5A68C951F1C0D /* PaintBuddy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		961CE8F4A3AE43568732996C /* PaintBuddyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AE3EC9D318BA87D41CDEF59 /* Build configuration list for PBXNativeTarget "PaintBuddyTests" */;
+			buildPhases = (
+				8BE9D2442C7942DFACF87610 /* Sources */,
+				E0E700E9970EB169DB7A0B6B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB57FDC854D8F21052203767 /* PBXTargetDependency */,
+			);
+			name = PaintBuddyTests;
+			packageProductDependencies = (
+				13199191E3C4CB66F7CD2C1E /* BuddyTesting */,
+			);
+			productName = PaintBuddyTests;
+			productReference = 89BB66786B679ADF2B7D9B6A /* PaintBuddyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F48057AC529A801659C03E39 /* PaintBuddyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDB4A631ECA204EED95E5BB1 /* Build configuration list for PBXNativeTarget "PaintBuddyUITests" */;
+			buildPhases = (
+				BC7116843498CAE0BF4A4161 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2B9CD8848E57E24F9C093455 /* PBXTargetDependency */,
+			);
+			name = PaintBuddyUITests;
+			packageProductDependencies = (
+			);
+			productName = PaintBuddyUITests;
+			productReference = 5E6792EEFF5B78341D326E59 /* PaintBuddyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		94F1B9986B7BDA835DE63A98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					F48057AC529A801659C03E39 = {
+						TestTargetID = 5AF530524224DA09D327F31C;
+					};
+				};
+			};
+			buildConfigurationList = 47C2336A988BDEE823EAFDA0 /* Build configuration list for PBXProject "PaintBuddy" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 1A725EEAD7E9F9ADD7AA3333;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				147E681F2531CCA98A3AF6BF /* XCLocalSwiftPackageReference "Vendor/shared-buddy" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = D83E97EF1E01DFD968DBFB4A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5AF530524224DA09D327F31C /* PaintBuddy */,
+				961CE8F4A3AE43568732996C /* PaintBuddyTests */,
+				F48057AC529A801659C03E39 /* PaintBuddyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6D0A16513A2C677552F90C21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EA03EEE1335F069A269C977 /* Assets.xcassets in Resources */,
+				B53E5A8A12697D03DF45A191 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0D30D3D138388A565B8F1D73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6D2949836204FD50176E6B9 /* AppDelegate.swift in Sources */,
+				CE8D76A41D3976754DD71EC1 /* ColorPickerController.swift in Sources */,
+				7D29BD48F0A6A6B4C7681AF8 /* ColorStore.swift in Sources */,
+				EADE6B316D47D90B3F086A5B /* DashboardView.swift in Sources */,
+				F84E23B5C92B229422BACD4F /* FloatingHistoryPanelController.swift in Sources */,
+				44811439BB6DA792F3F9A36C /* MenuBarView.swift in Sources */,
+				2B0BDF8B1CD99A5986E403DB /* PaintBuddyApp.swift in Sources */,
+				FB20689DA65A90A8B70D84AA /* PaintMarketingCaptureRunner.swift in Sources */,
+				ACF7B2BE04BB9BEBEA5A9682 /* SettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BE9D2442C7942DFACF87610 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC6E0C9E7CA44E3E1320FF78 /* ColorStoreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC7116843498CAE0BF4A4161 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F754590925F31C405AB478B1 /* PaintBuddyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2B9CD8848E57E24F9C093455 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5AF530524224DA09D327F31C /* PaintBuddy */;
+			targetProxy = A19F3F7E32C3A83BF9A99D52 /* PBXContainerItemProxy */;
+		};
+		AB57FDC854D8F21052203767 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5AF530524224DA09D327F31C /* PaintBuddy */;
+			targetProxy = 08A9D3A2ADF28D0A915C139B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0A9EA3BD68EC3E575724EFA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.buddy.paint.tests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PaintBuddy.app/Contents/MacOS/PaintBuddy";
+			};
+			name = Release;
+		};
+		1304556D92C21AECCEAD87D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.buddy.paint.tests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PaintBuddy.app/Contents/MacOS/PaintBuddy";
+			};
+			name = Debug;
+		};
+		33D9347F91214C43F8B9DEA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BASE_SDK = macosx;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		533E54325BDA45CD42F41D16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PaintBuddy/PaintBuddy.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = G42Z863W7H;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_TESTABILITY = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PaintBuddy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.buddy.paint;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		78BC1571FE66B9D5F8DEED84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.buddy.paint.uitests;
+				SDKROOT = macosx;
+				TEST_TARGET_NAME = PaintBuddy;
+			};
+			name = Release;
+		};
+		8AA33535EF10195ED7824C0C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.buddy.paint.uitests;
+				SDKROOT = macosx;
+				TEST_TARGET_NAME = PaintBuddy;
+			};
+			name = Debug;
+		};
+		C30E941FE3A0F2667CD7A3AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BASE_SDK = macosx;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		F03429165EFA330A10773DEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PaintBuddy/PaintBuddy.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = G42Z863W7H;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_TESTABILITY = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PaintBuddy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.buddy.paint;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		26ED379723A493E8D053DDA1 /* Build configuration list for PBXNativeTarget "PaintBuddy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F03429165EFA330A10773DEC /* Debug */,
+				533E54325BDA45CD42F41D16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		2AE3EC9D318BA87D41CDEF59 /* Build configuration list for PBXNativeTarget "PaintBuddyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1304556D92C21AECCEAD87D8 /* Debug */,
+				0A9EA3BD68EC3E575724EFA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		47C2336A988BDEE823EAFDA0 /* Build configuration list for PBXProject "PaintBuddy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C30E941FE3A0F2667CD7A3AF /* Debug */,
+				33D9347F91214C43F8B9DEA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FDB4A631ECA204EED95E5BB1 /* Build configuration list for PBXNativeTarget "PaintBuddyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AA33535EF10195ED7824C0C /* Debug */,
+				78BC1571FE66B9D5F8DEED84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		147E681F2531CCA98A3AF6BF /* XCLocalSwiftPackageReference "Vendor/shared-buddy" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "Vendor/shared-buddy";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		13199191E3C4CB66F7CD2C1E /* BuddyTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BuddyTesting;
+		};
+		1D2F15CFBE9DB394DE8FDCFF /* BuddyCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BuddyCore;
+		};
+		AC41B16345534C7DC6E22563 /* BuddyLocalization */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BuddyLocalization;
+		};
+		BDA702773DA9E8C3E211B829 /* BuddyFirebase */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BuddyFirebase;
+		};
+		D11D1B3C3BC2B5E1597E2880 /* BuddyUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BuddyUI;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 94F1B9986B7BDA835DE63A98 /* Project object */;
+}
