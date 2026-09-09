@@ -1,7 +1,7 @@
 import AppKit
 import BuddyCore
 
-/// One-shot screen color sampler: eyedropper cursor, click to save into history.
+/// One-shot screen color sampler: eyedropper cursor, click to save into history or favorites.
 @MainActor
 final class ColorPickerController: NSObject {
     private weak var store: ColorStore?
@@ -12,7 +12,11 @@ final class ColorPickerController: NSObject {
         self.store = store
     }
 
-    func show() {
+    /// Shows the system eyedropper. `onFinished` runs after a color is picked or the user cancels.
+    func show(
+        destination: PaintColorPickDestination = .history,
+        onFinished: (() -> Void)? = nil
+    ) {
         // Cancel any in-flight sampler before starting a new pick.
         activeSampler = nil
 
@@ -23,8 +27,10 @@ final class ColorPickerController: NSObject {
             Task { @MainActor in
                 guard let self else { return }
                 self.activeSampler = nil
-                guard let color else { return }
-                self.store?.addFromPicker(color: color)
+                if let color {
+                    self.store?.addFromPicker(color: color, destination: destination)
+                }
+                onFinished?()
             }
         }
     }

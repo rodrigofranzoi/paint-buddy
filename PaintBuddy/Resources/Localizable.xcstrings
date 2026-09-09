@@ -1,6 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
+    "Add Favorite" : {
+
+    },
     "Clipboard" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -45,9 +51,6 @@
         }
       }
     },
-    "Copied" : {
-
-    },
     "Copy a color or pick one" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -81,6 +84,9 @@
         }
       }
     },
+    "Hex" : {
+
+    },
     "No colors yet" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -103,6 +109,12 @@
         }
       }
     },
+    "Pick a color or add one manually" : {
+
+    },
+    "Pick a color, add one manually, or favorite from history" : {
+
+    },
     "Pick Color" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -117,6 +129,9 @@
     "Recent" : {
 
     },
+    "RGBA" : {
+
+    },
     "Select a color" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -127,6 +142,12 @@
           }
         }
       }
+    },
+    "Suggestions" : {
+
+    },
+    "Values" : {
+
     }
   },
   "version" : "1.0"

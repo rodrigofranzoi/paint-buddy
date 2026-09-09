@@ -14,6 +14,7 @@
 		45647D7FB9813E393C722F36 /* BuddyFirebase in Frameworks */ = {isa = PBXBuildFile; productRef = BDA702773DA9E8C3E211B829 /* BuddyFirebase */; };
 		6CF735771997396BEE9B2787 /* BuddyLocalization in Frameworks */ = {isa = PBXBuildFile; productRef = AC41B16345534C7DC6E22563 /* BuddyLocalization */; };
 		7D29BD48F0A6A6B4C7681AF8 /* ColorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B02EB46DCD9343529F0898 /* ColorStore.swift */; };
+		A1B2C3D4E5F60718293A4B5C /* AddFavoriteColorPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C3D4E5F60718293A4B5C6D /* AddFavoriteColorPopover.swift */; };
 		8E1F5EE8E2F2DAB383E07216 /* BuddyUI in Frameworks */ = {isa = PBXBuildFile; productRef = D11D1B3C3BC2B5E1597E2880 /* BuddyUI */; };
 		ACA50076AC537786CC75033D /* BuddyTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 13199191E3C4CB66F7CD2C1E /* BuddyTesting */; };
 		ACF7B2BE04BB9BEBEA5A9682 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38337E9A8D9C557CABB6AD10 /* SettingsView.swift */; };
@@ -54,6 +55,7 @@
 		6FBDAF99977B46961DBFB3CC /* PaintBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PaintBuddy.entitlements; sourceTree = "<group>"; };
 		78219D60D16C0F484FC62495 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		78B02EB46DCD9343529F0898 /* ColorStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStore.swift; sourceTree = "<group>"; };
+		B2C3D4E5F60718293A4B5C6D /* AddFavoriteColorPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavoriteColorPopover.swift; sourceTree = "<group>"; };
 		7D588A72A1D83DC6FBE7B612 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		89BB66786B679ADF2B7D9B6A /* PaintBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaintBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89D7C3ADF34C7A6320F3518A /* PaintBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintBuddyUITests.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				E85F8F64A378A0BF705278F8 /* AppDelegate.swift */,
+				B2C3D4E5F60718293A4B5C6D /* AddFavoriteColorPopover.swift */,
 				F0154D04ED192ED82F3FC530 /* Assets.xcassets */,
 				B825E3CDE81372B22B4F0AE8 /* ColorPickerController.swift */,
 				78B02EB46DCD9343529F0898 /* ColorStore.swift */,
@@ -282,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6D2949836204FD50176E6B9 /* AppDelegate.swift in Sources */,
+				A1B2C3D4E5F60718293A4B5C /* AddFavoriteColorPopover.swift in Sources */,
 				CE8D76A41D3976754DD71EC1 /* ColorPickerController.swift in Sources */,
 				7D29BD48F0A6A6B4C7681AF8 /* ColorStore.swift in Sources */,
 				EADE6B316D47D90B3F086A5B /* DashboardView.swift in Sources */,

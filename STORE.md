@@ -70,7 +70,10 @@ Please try:
 • Menu bar icon → recent colors popover → Open / Settings
 • Copy color strings: #FF5733, rgb(255,87,51), rgba(...), tomato, (0.5, 0.2, 0.8)
 • Pick Color (eyedropper): click once to sample a screen color into history
-• Floating Palette: toggle always-on-top panel; try list vs grid if available
+• Floating History / Favorites: always-on-top panels; try list vs grid and swatch size
+• Favorite a color from history (context menu) or the detail pane
+• Copy preferred format; copy individual R/G/B/A channels from the detail pane
+• Suggestions: try darker / harmony swatches under the selected color
 • Click a color to copy; change preferred copy format in Settings
 • Toggle which formats are captured (hex / rgb / rgba / named / tuple)
 • Pause monitoring from the menu bar, copy a color (should not save), then resume
@@ -99,7 +102,7 @@ Same content as **App Review Notes** above if Apple requests Beta App Review Inf
 
 Paint Buddy watches your clipboard for colors — hex, rgb, rgba, named CSS colors, and simple tuples — and keeps a tidy history in the menu bar.
 
-Open the main window or an always-on-top floating palette when you need your swatches nearby. Pick a new color with a one-shot eyedropper (no Screen Recording). Choose which formats to save and how copied colors are formatted.
+Open the main window or always-on-top floating panels for history and favorites when you need your swatches nearby. Pick a new color with a one-shot eyedropper (no Screen Recording). Star favorites, copy hex/rgb/rgba or individual channels, and explore suggested relatives. Choose which formats to save and how copied colors are formatted.
 
 Pause monitoring when you need privacy. Launch at login if you like. Colors stay on your Mac.
 

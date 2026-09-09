@@ -46,11 +46,47 @@ struct ColorHistoryItem: Identifiable, Codable, Equatable, Hashable {
     var displayTitle: String {
         PaintColorSettings.copyFormat.string(from: nsColor ?? .black)
     }
+
+    /// Hex string for UI rows, respecting preferred `#` / plain preference.
+    var displayHex: String {
+        switch PaintColorSettings.copyFormat {
+        case .hexPlain:
+            return EditorRedactionSettings.hexPlain(fromHex: hex)
+        case .hex, .rgb, .rgba:
+            return hex
+        }
+    }
 }
 
 extension Notification.Name {
     static let paintToggleFloatingPanel = Notification.Name("paint.buddy.toggleFloatingPanel")
+    static let paintToggleFloatingFavoritesPanel = Notification.Name("paint.buddy.toggleFloatingFavoritesPanel")
     static let paintShowColorPicker = Notification.Name("paint.buddy.showColorPicker")
+}
+
+enum PaintColorPickDestination: String {
+    case history
+    case favorites
+
+    static let userInfoKey = "destination"
+
+    static func fromNotification(_ note: Notification) -> PaintColorPickDestination {
+        if let raw = note.userInfo?[userInfoKey] as? String,
+           let value = PaintColorPickDestination(rawValue: raw) {
+            return value
+        }
+        return .history
+    }
+}
+
+extension NotificationCenter {
+    static func postPaintShowColorPicker(destination: PaintColorPickDestination = .history) {
+        NotificationCenter.default.post(
+            name: .paintShowColorPicker,
+            object: nil,
+            userInfo: [PaintColorPickDestination.userInfoKey: destination.rawValue]
+        )
+    }
 }
 
 @MainActor
@@ -58,6 +94,7 @@ final class ColorStore: ObservableObject {
     static let shared = ColorStore()
 
     @Published var items: [ColorHistoryItem] = []
+    @Published var favorites: [ColorHistoryItem] = []
     @Published var selectedId: UUID?
     @Published var query: String = ""
     @Published var maxHistoryCount: Int = PaintColorSettings.maxHistoryCount
@@ -65,19 +102,23 @@ final class ColorStore: ObservableObject {
     private var timer: Timer?
     private var lastChangeCount: Int = -1
     private let historyKey = "paint.history"
+    private let favoritesKey = "paint.favorites"
 
     init() {
         load()
     }
 
     var filtered: [ColorHistoryItem] {
-        let q = query.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-        guard !q.isEmpty else { return items }
-        return items.filter {
-            $0.hex.lowercased().contains(q)
-                || $0.raw.lowercased().contains(q)
-                || $0.kind.rawValue.contains(q)
-        }
+        filterList(items)
+    }
+
+    var filteredFavorites: [ColorHistoryItem] {
+        filterList(favorites)
+    }
+
+    func item(id: UUID?) -> ColorHistoryItem? {
+        guard let id else { return nil }
+        return items.first { $0.id == id } ?? favorites.first { $0.id == id }
     }
 
     func startMonitoring() {
@@ -134,18 +175,23 @@ final class ColorStore: ObservableObject {
         return added
     }
 
-    func addFromPicker(color: NSColor) {
+    func addFromPicker(color: NSColor, destination: PaintColorPickDestination = .history) {
         let converted = color.usingColorSpace(.sRGB) ?? color
         let format = PaintColorSettings.copyFormat
         let raw = format.string(from: converted)
         let kind: ColorTokenKind = {
             switch format {
-            case .hex: return .hex
+            case .hex, .hexPlain: return .hex
             case .rgb: return .rgb
             case .rgba: return .rgba
             }
         }()
-        prepend(makeItem(color: converted, raw: raw, kind: kind, source: .picker))
+        switch destination {
+        case .history:
+            prepend(makeItem(color: converted, raw: raw, kind: kind, source: .picker))
+        case .favorites:
+            _ = addFavorite(color: converted, raw: raw, kind: kind, source: .picker)
+        }
         copyStringToPasteboard(raw)
     }
 
@@ -164,6 +210,8 @@ final class ColorStore: ObservableObject {
         switch resolved {
         case .hex:
             copyStringToPasteboard(item.hex)
+        case .hexPlain:
+            copyStringToPasteboard(EditorRedactionSettings.hexPlain(fromHex: item.hex))
         case .rgb, .rgba:
             copyStringToPasteboard(resolved.string(from: color))
         }
@@ -171,20 +219,101 @@ final class ColorStore: ObservableObject {
 
     func delete(_ item: ColorHistoryItem) {
         items.removeAll { $0.id == item.id }
-        if selectedId == item.id { selectedId = items.first?.id }
-        save()
+        if selectedId == item.id {
+            selectedId = items.first?.id ?? favorites.first?.id
+        }
+        saveHistory()
     }
 
     func clearAllHistory() {
         items = []
-        selectedId = nil
-        save()
+        if let selectedId, favorites.contains(where: { $0.id == selectedId }) {
+            // Keep favorite selection.
+        } else {
+            selectedId = favorites.first?.id
+        }
+        saveHistory()
+    }
+
+    func isFavorite(_ item: ColorHistoryItem) -> Bool {
+        isFavorite(hex: item.hex)
+    }
+
+    func isFavorite(hex: String) -> Bool {
+        favorites.contains { $0.hex.compare(hex, options: .caseInsensitive) == .orderedSame }
+    }
+
+    @discardableResult
+    func addFavorite(_ item: ColorHistoryItem) -> ColorHistoryItem {
+        favorites.removeAll { $0.hex.compare(item.hex, options: .caseInsensitive) == .orderedSame }
+        let favorite = ColorHistoryItem(
+            hex: item.hex,
+            raw: item.raw,
+            kind: item.kind,
+            source: item.source,
+            alpha: item.alpha
+        )
+        favorites.insert(favorite, at: 0)
+        selectedId = favorite.id
+        saveFavorites()
+        return favorite
+    }
+
+    @discardableResult
+    func addFavorite(color: NSColor, raw: String? = nil, kind: ColorTokenKind = .hex, source: ColorHistoryItem.Source = .picker) -> ColorHistoryItem {
+        let item = makeItem(
+            color: color,
+            raw: raw ?? PaintColorSettings.copyFormat.string(from: color.usingColorSpace(.sRGB) ?? color),
+            kind: kind,
+            source: source
+        )
+        return addFavorite(item)
+    }
+
+    func removeFavorite(_ item: ColorHistoryItem) {
+        favorites.removeAll {
+            $0.id == item.id
+                || $0.hex.compare(item.hex, options: .caseInsensitive) == .orderedSame
+        }
+        if selectedId == item.id {
+            selectedId = favorites.first?.id ?? items.first?.id
+        }
+        saveFavorites()
+    }
+
+    func removeFavorite(hex: String) {
+        favorites.removeAll { $0.hex.compare(hex, options: .caseInsensitive) == .orderedSame }
+        if let selectedId,
+           let selected = item(id: selectedId),
+           selected.hex.compare(hex, options: .caseInsensitive) == .orderedSame,
+           !items.contains(where: { $0.id == selectedId }) {
+            self.selectedId = favorites.first?.id ?? items.first?.id
+        }
+        saveFavorites()
+    }
+
+    func toggleFavorite(_ item: ColorHistoryItem) {
+        if isFavorite(item) {
+            removeFavorite(item)
+        } else {
+            addFavorite(item)
+        }
     }
 
     func applyHistoryLimits() {
         maxHistoryCount = PaintColorSettings.maxHistoryCount
         prune()
-        save()
+        saveHistory()
+    }
+
+    private func filterList(_ list: [ColorHistoryItem]) -> [ColorHistoryItem] {
+        let q = query.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        guard !q.isEmpty else { return list }
+        return list.filter {
+            $0.hex.lowercased().contains(q)
+                || $0.raw.lowercased().contains(q)
+                || $0.kind.rawValue.contains(q)
+        }
     }
 
     private func makeItem(
@@ -219,13 +348,13 @@ final class ColorStore: ObservableObject {
         if let first = items.first, first.hex.compare(item.hex, options: .caseInsensitive) == .orderedSame {
             items[0] = item
             selectedId = item.id
-            save()
+            saveHistory()
             return
         }
         items.insert(item, at: 0)
         selectedId = item.id
         prune()
-        save()
+        saveHistory()
         BuddyFirebase.log(event: "color_saved", parameters: ["source": item.source.rawValue])
     }
 
@@ -322,8 +451,27 @@ final class ColorStore: ObservableObject {
                 source: .clipboard
             )
         ]
+        favorites = [
+            ColorHistoryItem(
+                id: MarketingColorID.violetFavorite,
+                createdAt: now.addingTimeInterval(-30),
+                hex: "#7C3AED",
+                raw: "#7C3AED",
+                kind: .hex,
+                source: .clipboard
+            ),
+            ColorHistoryItem(
+                id: MarketingColorID.emeraldFavorite,
+                createdAt: now.addingTimeInterval(-90),
+                hex: "#10B981",
+                raw: "rgb(16, 185, 129)",
+                kind: .rgb,
+                source: .clipboard
+            )
+        ]
         selectedId = MarketingColorID.violet
-        save()
+        saveHistory()
+        saveFavorites()
     }
 
     enum MarketingColorID {
@@ -335,18 +483,29 @@ final class ColorStore: ObservableObject {
         static let rose = UUID(uuidString: "CCCCCCCC-0001-4000-8000-000000000006")!
         static let indigo = UUID(uuidString: "CCCCCCCC-0001-4000-8000-000000000007")!
         static let slate = UUID(uuidString: "CCCCCCCC-0001-4000-8000-000000000008")!
+        static let violetFavorite = UUID(uuidString: "CCCCCCCC-0001-4000-8000-000000000011")!
+        static let emeraldFavorite = UUID(uuidString: "CCCCCCCC-0001-4000-8000-000000000012")!
     }
 
     private func load() {
-        guard let data = UserDefaults.standard.data(forKey: historyKey),
-              let decoded = try? JSONDecoder().decode([ColorHistoryItem].self, from: data)
-        else { return }
-        items = decoded
-        selectedId = items.first?.id
+        if let data = UserDefaults.standard.data(forKey: historyKey),
+           let decoded = try? JSONDecoder().decode([ColorHistoryItem].self, from: data) {
+            items = decoded
+        }
+        if let data = UserDefaults.standard.data(forKey: favoritesKey),
+           let decoded = try? JSONDecoder().decode([ColorHistoryItem].self, from: data) {
+            favorites = decoded
+        }
+        selectedId = items.first?.id ?? favorites.first?.id
     }
 
-    private func save() {
+    private func saveHistory() {
         guard let data = try? JSONEncoder().encode(items) else { return }
         UserDefaults.standard.set(data, forKey: historyKey)
+    }
+
+    private func saveFavorites() {
+        guard let data = try? JSONEncoder().encode(favorites) else { return }
+        UserDefaults.standard.set(data, forKey: favoritesKey)
     }
 }

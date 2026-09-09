@@ -19,10 +19,11 @@ struct PaintBuddyApp: App {
         WindowGroup("Paint Buddy") {
             DashboardView()
                 .environmentObject(store)
-                .frame(minWidth: 640, minHeight: 420)
+                .frame(minWidth: 760, minHeight: 480)
                 .background(BuddyMainWindowRegistrar())
                 .buddyAppearance(brand: brand)
         }
+        .defaultSize(width: 860, height: 560)
         Settings {
             SettingsView()
                 .environmentObject(store)

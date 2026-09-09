@@ -9,7 +9,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var popover: NSPopover?
     private var popoverOutsideClickMonitors: [Any] = []
     var store: ColorStore?
-    private let floatingPanel = FloatingHistoryPanelController()
+    private let floatingPanel = FloatingPalettePanelController(kind: .history)
+    private let floatingFavoritesPanel = FloatingPalettePanelController(kind: .favorites)
     private let colorPicker = ColorPickerController()
 
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -19,6 +20,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let store = ColorStore.shared
         self.store = store
         floatingPanel.attach(store: store)
+        floatingFavoritesPanel.attach(store: store)
         colorPicker.attach(store: store)
 
         let pause = BuddyPauseController.shared
@@ -76,12 +78,23 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         NotificationCenter.default.addObserver(
-            forName: .paintShowColorPicker,
+            forName: .paintToggleFloatingFavoritesPanel,
             object: nil,
             queue: .main
         ) { [weak self] _ in
             Task { @MainActor in
-                self?.colorPicker.show()
+                self?.floatingFavoritesPanel.toggle()
+            }
+        }
+
+        NotificationCenter.default.addObserver(
+            forName: .paintShowColorPicker,
+            object: nil,
+            queue: .main
+        ) { [weak self] note in
+            let destination = PaintColorPickDestination.fromNotification(note)
+            Task { @MainActor in
+                self?.beginColorPick(destination: destination)
             }
         }
 
@@ -122,6 +135,25 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             closePopover()
         } else {
             showPopover()
+        }
+    }
+
+    /// Dismisses the menu-bar popover while sampling, then restores it after pick/cancel if it was open.
+    private func beginColorPick(destination: PaintColorPickDestination = .history) {
+        let shouldRestorePopover = popover?.isShown == true
+        if shouldRestorePopover {
+            closePopover()
+        }
+
+        // Let the popover finish dismissing so the eyedropper can receive clicks.
+        Task { @MainActor in
+            if shouldRestorePopover {
+                try? await Task.sleep(nanoseconds: 80_000_000)
+            }
+            colorPicker.show(destination: destination) { [weak self] in
+                guard shouldRestorePopover else { return }
+                self?.showPopover()
+            }
         }
     }
 

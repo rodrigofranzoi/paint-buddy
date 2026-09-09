@@ -9,6 +9,10 @@ struct MenuBarView: View {
     @AppStorage(BuddySettingsKey.paintMenuBarRecentCount) private var menuBarRecentCount =
         PaintColorSettings.defaultMenuBarRecentCount
 
+    private var recent: [ColorHistoryItem] {
+        Array(store.items.prefix(max(menuBarRecentCount, 1)))
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             if pause.isPaused {
@@ -20,20 +24,36 @@ struct MenuBarView: View {
 
             HStack(spacing: BuddyTheme.Spacing.sm) {
                 Button {
-                    NotificationCenter.default.post(name: .paintShowColorPicker, object: nil)
+                    NotificationCenter.postPaintShowColorPicker()
                 } label: {
-                    Label("Pick Color", systemImage: "eyedropper")
+                    Image(systemName: "eyedropper")
                 }
                 .buttonStyle(.borderless)
+                .help("Pick Color")
+                .accessibilityLabel("Pick Color")
                 .accessibilityIdentifier("menubar-pick-color")
 
                 Button {
                     NotificationCenter.default.post(name: .paintToggleFloatingPanel, object: nil)
                 } label: {
-                    Label("Palette", systemImage: "rectangle.on.rectangle")
+                    Image(systemName: "clock")
                 }
                 .buttonStyle(.borderless)
+                .help("History Palette")
+                .accessibilityLabel("History Palette")
                 .accessibilityIdentifier("menubar-floating-palette")
+
+                Button {
+                    NotificationCenter.default.post(name: .paintToggleFloatingFavoritesPanel, object: nil)
+                } label: {
+                    Image(systemName: "swatchpalette")
+                }
+                .buttonStyle(.borderless)
+                .help("Favorites Palette")
+                .accessibilityLabel("Favorites Palette")
+                .accessibilityIdentifier("menubar-floating-favorites")
+
+                Spacer(minLength: 0)
             }
             .padding([.horizontal, .top])
             .padding(.bottom, BuddyTheme.Spacing.sm)
@@ -42,27 +62,30 @@ struct MenuBarView: View {
                 .font(.headline)
                 .padding(.horizontal)
 
-            let recent = Array(store.items.prefix(max(menuBarRecentCount, 1)))
             if recent.isEmpty {
                 Text("No colors yet")
                     .foregroundStyle(.secondary)
                     .padding()
+                Spacer(minLength: 0)
             } else {
-                ForEach(Array(recent.enumerated()), id: \.element.id) { index, item in
-                    MenuBarRow(
-                        title: item.displayTitle,
-                        subtitle: item.raw,
-                        colorSwatch: item.nsColor.map { Color(nsColor: $0) },
-                        copyAction: { store.copyItem(item) },
-                        showsSeparator: index < recent.count - 1
-                    ) {
-                        store.copyItem(item)
+                ScrollView {
+                    LazyVStack(alignment: .leading, spacing: 0) {
+                        ForEach(Array(recent.enumerated()), id: \.element.id) { index, item in
+                            MenuBarRow(
+                                title: item.displayTitle,
+                                subtitle: item.raw,
+                                colorSwatch: item.nsColor.map { Color(nsColor: $0) },
+                                copyAction: { store.copyItem(item) },
+                                showsSeparator: index < recent.count - 1
+                            ) {
+                                store.copyItem(item)
+                            }
+                            .padding(.horizontal)
+                        }
                     }
-                    .padding(.horizontal)
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-
-            Spacer(minLength: 0)
 
             BuddyPauseControls(pause: pause)
 
