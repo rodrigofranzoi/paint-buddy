@@ -33,6 +33,7 @@ struct SettingsView: View {
                 Section("Startup") {
                     BuddyLaunchAtLoginToggle()
                 }
+                BuddyRateAppSettingsSection(brand: brand)
             case BuddySettingsItem.privacy.id:
                 BuddyLegalLinksSection(brand: brand)
             default:

@@ -4,10 +4,10 @@ Supported locales: `en`, `nl`, `pt`, `es`, `fr`, `it`, `ar`, `zh`, `ru`, `ja`.
 
 ## Legal URLs (App Store Connect)
 
-- App Store ID: _(assign after first Connect listing; update `BuddyLegalURLs.appStoreID`)_
+- App Store ID: `6809586126`
 - Privacy: https://rodrigofranzoi.github.io/paint-buddy/privacy.html
 - Terms: https://rodrigofranzoi.github.io/paint-buddy/terms.html
-- Rate / write review: _(available once App Store ID is set)_
+- Rate / write review: https://apps.apple.com/app/id6809586126?action=write-review
 
 ## What's New (all locales)
 

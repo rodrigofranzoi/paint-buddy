@@ -16,6 +16,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         BuddyLaunchAtLogin.enableByDefaultOnFirstInstall()
         BuddyAppearanceSettings.applyAppKitAppearance()
+        BuddyAppReviewPrompt.shared.recordLaunch()
 
         let store = ColorStore.shared
         self.store = store

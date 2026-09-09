@@ -14,6 +14,7 @@
 - Configurable floating grid swatch size (columns follow window width)
 - Pause monitoring, launch at login, appearance / accent
 - History limits and erase-all
+- App Store rating: Settings → Support, menu bar Rate link, occasional in-app review prompt
 
 ## Out of scope (v1)
 

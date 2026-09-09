@@ -22,11 +22,13 @@ struct PaintBuddyApp: App {
                 .frame(minWidth: 760, minHeight: 480)
                 .background(BuddyMainWindowRegistrar())
                 .buddyAppearance(brand: brand)
+                .buddyAskForReviewOccasionally(brand: brand)
         }
         .defaultSize(width: 860, height: 560)
         Settings {
             SettingsView()
                 .environmentObject(store)
+                .buddyAskForReviewOccasionally(brand: brand)
         }
     }
 }

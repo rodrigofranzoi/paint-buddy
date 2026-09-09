@@ -256,6 +256,7 @@ final class ColorStore: ObservableObject {
         favorites.insert(favorite, at: 0)
         selectedId = favorite.id
         saveFavorites()
+        BuddyAppReviewPrompt.recordSignificantEventAndConsiderPrompt()
         return favorite
     }
 
@@ -356,6 +357,7 @@ final class ColorStore: ObservableObject {
         prune()
         saveHistory()
         BuddyFirebase.log(event: "color_saved", parameters: ["source": item.source.rawValue])
+        BuddyAppReviewPrompt.recordSignificantEventAndConsiderPrompt()
     }
 
     private func prune() {
