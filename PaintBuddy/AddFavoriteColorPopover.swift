@@ -113,3 +113,22 @@ struct AddFavoriteColorPopover: View {
         invalidHint = "Unrecognized color"
     }
 }
+
+/// macOS 13-safe stand-in for `star.badge.plus` (SF Symbols 5+ / macOS 14+).
+struct AddFavoriteSymbol: View {
+    var body: some View {
+        ZStack(alignment: .bottomTrailing) {
+            Image(systemName: "star")
+            Image(systemName: "plus.circle.fill")
+                .font(.system(size: 8, weight: .bold))
+                .background(
+                    Circle()
+                        .fill(Color(nsColor: .windowBackgroundColor))
+                        .padding(-1)
+                )
+                .offset(x: 4, y: 3)
+        }
+        .frame(width: 20, height: 16)
+        .accessibilityHidden(true)
+    }
+}

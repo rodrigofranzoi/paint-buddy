@@ -154,13 +154,23 @@ struct FloatingPaletteView: View {
                 .padding()
                 Spacer()
             } else {
-                switch viewMode {
-                case .grid:
-                    gridContent
-                case .minimal:
-                    listContent(detailed: false)
-                case .detailed:
-                    listContent(detailed: true)
+                ScrollViewReader { proxy in
+                    Group {
+                        switch viewMode {
+                        case .grid:
+                            gridContent
+                        case .minimal:
+                            listContent(detailed: false)
+                        case .detailed:
+                            listContent(detailed: true)
+                        }
+                    }
+                    .onChange(of: visibleItems.first?.id) { id in
+                        scrollToNewest(id, proxy: proxy)
+                    }
+                    .onAppear {
+                        scrollToNewest(visibleItems.first?.id, proxy: proxy)
+                    }
                 }
             }
         }
@@ -228,7 +238,7 @@ struct FloatingPaletteView: View {
                     Button {
                         showAddFavorite = true
                     } label: {
-                        Image(systemName: "plus")
+                        AddFavoriteSymbol()
                     }
                     .buttonStyle(.borderless)
                     .help("Add favorite color")
@@ -279,6 +289,7 @@ struct FloatingPaletteView: View {
             ) {
                 ForEach(visibleItems) { item in
                     paletteCell(item)
+                        .id(item.id)
                 }
             }
             .padding(.horizontal)
@@ -331,14 +342,31 @@ struct FloatingPaletteView: View {
     }
 
     private func listContent(detailed: Bool) -> some View {
-        List(visibleItems, selection: $store.selectedId) { item in
+        // Do not bind List selection to `store.selectedId` — selecting a favorite while the
+        // main window shows History asserts when the ID is not in that list.
+        List {
+            ForEach(visibleItems) { item in
+                listRow(item, detailed: detailed)
+                    .id(item.id)
+                    .listRowInsets(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
+                    .contextMenu { itemContextMenu(item) }
+            }
+        }
+        .listStyle(.plain)
+    }
+
+    private func listRow(_ item: ColorHistoryItem, detailed: Bool) -> some View {
+        let fill = item.nsColor ?? .gray
+        let components = EditorRedactionSettings.rgbaComponents(from: fill)
+        let isHovered = hoveredItemId == item.id
+        return VStack(alignment: .leading, spacing: 6) {
             Button {
                 copyColor(item)
             } label: {
                 HStack(spacing: 8) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 3, style: .continuous)
-                            .fill(Color(nsColor: item.nsColor ?? .gray))
+                            .fill(Color(nsColor: fill))
                             .frame(width: 18, height: 18)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 3, style: .continuous)
@@ -351,40 +379,63 @@ struct FloatingPaletteView: View {
                                 .shadow(radius: 1)
                         }
                     }
-                    if hoveredItemId == item.id && copiedItemId != item.id {
-                        Text(preferredLabel(for: item))
-                            .font(.callout.monospaced())
-                            .lineLimit(1)
-                    } else if detailed {
-                        VStack(alignment: .leading, spacing: 1) {
-                            Text(item.displayTitle)
-                                .font(.callout)
-                                .lineLimit(1)
-                            Text(item.raw)
-                                .font(.caption2)
-                                .foregroundStyle(.secondary)
-                                .lineLimit(1)
-                        }
-                    } else {
-                        Text(item.displayTitle)
-                            .font(.callout)
-                            .lineLimit(1)
-                    }
+                    Text(preferredLabel(for: item))
+                        .font(.callout.monospaced())
+                        .fontWeight(detailed && isHovered ? .bold : .regular)
+                        .lineLimit(1)
+                        .foregroundStyle(copiedItemId == item.id ? Color.green : Color.primary)
                     Spacer(minLength: 0)
                 }
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
-            .tag(item.id)
-            .onHover { hovering in
-                hoveredItemId = hovering ? item.id : (hoveredItemId == item.id ? nil : hoveredItemId)
-            }
-            .help(preferredLabel(for: item))
-            .accessibilityHint("Copies to clipboard")
+            .help(copiedItemId == item.id ? "Copied" : "Copy \(preferredLabel(for: item))")
+            .accessibilityLabel(preferredLabel(for: item))
+            .accessibilityHint("Copies preferred format to clipboard")
             .accessibilityValue(copiedItemId == item.id ? "Copied" : "")
-            .contextMenu { itemContextMenu(item) }
+
+            if detailed {
+                VStack(alignment: .leading, spacing: 4) {
+                    FloatingChannelCopyChip(label: "Hex", value: item.hex) {
+                        store.copyString(item.hex)
+                    }
+                    HStack(spacing: 6) {
+                        FloatingChannelCopyChip(label: "R", value: "\(components.r)") {
+                            store.copyString("\(components.r)")
+                        }
+                        FloatingChannelCopyChip(label: "G", value: "\(components.g)") {
+                            store.copyString("\(components.g)")
+                        }
+                        FloatingChannelCopyChip(label: "B", value: "\(components.b)") {
+                            store.copyString("\(components.b)")
+                        }
+                        FloatingChannelCopyChip(label: "A", value: alphaChannelString(components.a)) {
+                            store.copyString(alphaChannelString(components.a))
+                        }
+                        Spacer(minLength: 0)
+                    }
+                }
+            }
         }
-        .listStyle(.plain)
+        .padding(.vertical, detailed ? 2 : 0)
+        .onHover { hovering in
+            guard detailed else { return }
+            hoveredItemId = hovering ? item.id : (hoveredItemId == item.id ? nil : hoveredItemId)
+        }
+    }
+
+    private func scrollToNewest(_ id: UUID?, proxy: ScrollViewProxy) {
+        guard let id else { return }
+        DispatchQueue.main.async {
+            withAnimation(.easeInOut(duration: 0.2)) {
+                proxy.scrollTo(id, anchor: .top)
+            }
+        }
+    }
+
+    private func alphaChannelString(_ alpha: Double) -> String {
+        if abs(alpha - 1) < 0.000_1 { return "1" }
+        return String(alpha)
     }
 
     @ViewBuilder
@@ -429,6 +480,40 @@ struct FloatingPaletteView: View {
                 copiedItemId = nil
             }
         }
+    }
+}
+
+private struct FloatingChannelCopyChip: View {
+    let label: String
+    let value: String
+    let onCopy: () -> Void
+
+    @State private var justCopied = false
+
+    var body: some View {
+        Button {
+            onCopy()
+            justCopied = true
+            Task { @MainActor in
+                try? await Task.sleep(nanoseconds: 1_200_000_000)
+                justCopied = false
+            }
+        } label: {
+            Text("\(label) \(value)")
+                .font(.caption.monospaced())
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+                .padding(.horizontal, 6)
+                .padding(.vertical, 3)
+                .background(
+                    RoundedRectangle(cornerRadius: 4, style: .continuous)
+                        .fill(justCopied ? Color.green.opacity(0.45) : BuddyTheme.BuddyColor.border.opacity(0.25))
+                )
+        }
+        .buttonStyle(.plain)
+        .help(justCopied ? "Copied" : "Copy \(label)")
+        .accessibilityLabel("Copy \(label) \(value)")
+        .accessibilityValue(justCopied ? "Copied" : "")
     }
 }
 

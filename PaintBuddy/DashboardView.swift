@@ -166,7 +166,7 @@ struct DashboardView: View {
                     Button {
                         showAddFavorite = true
                     } label: {
-                        Image(systemName: "plus")
+                        AddFavoriteSymbol()
                     }
                     .help("Add favorite color")
                     .accessibilityIdentifier("dashboard-add-favorite")
@@ -601,17 +601,18 @@ private struct ChannelCopyChip: View {
                 justCopied = false
             }
         } label: {
-            Text(justCopied ? "✓" : "\(label) \(value)")
+            Text("\(label) \(value)")
                 .font(.caption.monospaced())
                 .padding(.horizontal, 6)
                 .padding(.vertical, 3)
                 .background(
                     RoundedRectangle(cornerRadius: 4, style: .continuous)
-                        .fill(BuddyTheme.BuddyColor.border.opacity(0.25))
+                        .fill(justCopied ? Color.green.opacity(0.45) : BuddyTheme.BuddyColor.border.opacity(0.25))
                 )
         }
         .buttonStyle(.plain)
         .help(justCopied ? "Copied" : "Copy \(label)")
         .accessibilityLabel("Copy \(label) \(value)")
+        .accessibilityValue(justCopied ? "Copied" : "")
     }
 }
