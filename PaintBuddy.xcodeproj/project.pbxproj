@@ -14,13 +14,13 @@
 		45647D7FB9813E393C722F36 /* BuddyFirebase in Frameworks */ = {isa = PBXBuildFile; productRef = BDA702773DA9E8C3E211B829 /* BuddyFirebase */; };
 		6CF735771997396BEE9B2787 /* BuddyLocalization in Frameworks */ = {isa = PBXBuildFile; productRef = AC41B16345534C7DC6E22563 /* BuddyLocalization */; };
 		7D29BD48F0A6A6B4C7681AF8 /* ColorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B02EB46DCD9343529F0898 /* ColorStore.swift */; };
-		A1B2C3D4E5F60718293A4B5C /* AddFavoriteColorPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C3D4E5F60718293A4B5C6D /* AddFavoriteColorPopover.swift */; };
 		8E1F5EE8E2F2DAB383E07216 /* BuddyUI in Frameworks */ = {isa = PBXBuildFile; productRef = D11D1B3C3BC2B5E1597E2880 /* BuddyUI */; };
 		ACA50076AC537786CC75033D /* BuddyTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 13199191E3C4CB66F7CD2C1E /* BuddyTesting */; };
 		ACF7B2BE04BB9BEBEA5A9682 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38337E9A8D9C557CABB6AD10 /* SettingsView.swift */; };
 		B53E5A8A12697D03DF45A191 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 78219D60D16C0F484FC62495 /* Localizable.xcstrings */; };
 		CC6E0C9E7CA44E3E1320FF78 /* ColorStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585779114ED4D6FDC2F045E1 /* ColorStoreTests.swift */; };
 		CE8D76A41D3976754DD71EC1 /* ColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B825E3CDE81372B22B4F0AE8 /* ColorPickerController.swift */; };
+		E20347BDD8D428B26248437D /* AddFavoriteColorPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59792610E7F66A50687E48E /* AddFavoriteColorPopover.swift */; };
 		EADE6B316D47D90B3F086A5B /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4BF4D82F0D1EF29C606FA1 /* DashboardView.swift */; };
 		F6D2949836204FD50176E6B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85F8F64A378A0BF705278F8 /* AppDelegate.swift */; };
 		F754590925F31C405AB478B1 /* PaintBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D7C3ADF34C7A6320F3518A /* PaintBuddyUITests.swift */; };
@@ -55,16 +55,17 @@
 		6FBDAF99977B46961DBFB3CC /* PaintBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PaintBuddy.entitlements; sourceTree = "<group>"; };
 		78219D60D16C0F484FC62495 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		78B02EB46DCD9343529F0898 /* ColorStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStore.swift; sourceTree = "<group>"; };
-		B2C3D4E5F60718293A4B5C6D /* AddFavoriteColorPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavoriteColorPopover.swift; sourceTree = "<group>"; };
 		7D588A72A1D83DC6FBE7B612 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		89BB66786B679ADF2B7D9B6A /* PaintBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaintBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89D7C3ADF34C7A6320F3518A /* PaintBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintBuddyUITests.swift; sourceTree = "<group>"; };
+		9B84643872C893AFD4C283AB /* PaintBuddy-Marketing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "PaintBuddy-Marketing.entitlements"; sourceTree = "<group>"; };
 		AD4BF4D82F0D1EF29C606FA1 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		B825E3CDE81372B22B4F0AE8 /* ColorPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerController.swift; sourceTree = "<group>"; };
 		C8EF20B02AA5A68C951F1C0D /* PaintBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaintBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2DBCC7150C353F668498B50 /* shared-buddy */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "shared-buddy"; path = "Vendor/shared-buddy"; sourceTree = SOURCE_ROOT; };
 		E85F8F64A378A0BF705278F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0154D04ED192ED82F3FC530 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F59792610E7F66A50687E48E /* AddFavoriteColorPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavoriteColorPopover.swift; sourceTree = "<group>"; };
 		FB1BC35398F538053C11B423 /* PaintMarketingCaptureRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintMarketingCaptureRunner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,8 +138,8 @@
 		931E6F16F5EA7998FD639E6A /* PaintBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				F59792610E7F66A50687E48E /* AddFavoriteColorPopover.swift */,
 				E85F8F64A378A0BF705278F8 /* AppDelegate.swift */,
-				B2C3D4E5F60718293A4B5C6D /* AddFavoriteColorPopover.swift */,
 				F0154D04ED192ED82F3FC530 /* Assets.xcassets */,
 				B825E3CDE81372B22B4F0AE8 /* ColorPickerController.swift */,
 				78B02EB46DCD9343529F0898 /* ColorStore.swift */,
@@ -146,6 +147,7 @@
 				562676BBE00952E1EFCF9577 /* FloatingHistoryPanelController.swift */,
 				7D588A72A1D83DC6FBE7B612 /* Info.plist */,
 				2597A4261226980E129E58F1 /* MenuBarView.swift */,
+				9B84643872C893AFD4C283AB /* PaintBuddy-Marketing.entitlements */,
 				6FBDAF99977B46961DBFB3CC /* PaintBuddy.entitlements */,
 				64CA6856471BDCC2BE634A7D /* PaintBuddyApp.swift */,
 				FB1BC35398F538053C11B423 /* PaintMarketingCaptureRunner.swift */,
@@ -284,8 +286,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E20347BDD8D428B26248437D /* AddFavoriteColorPopover.swift in Sources */,
 				F6D2949836204FD50176E6B9 /* AppDelegate.swift in Sources */,
-				A1B2C3D4E5F60718293A4B5C /* AddFavoriteColorPopover.swift in Sources */,
 				CE8D76A41D3976754DD71EC1 /* ColorPickerController.swift in Sources */,
 				7D29BD48F0A6A6B4C7681AF8 /* ColorStore.swift in Sources */,
 				EADE6B316D47D90B3F086A5B /* DashboardView.swift in Sources */,
@@ -425,21 +427,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PaintBuddy/PaintBuddy.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = G42Z863W7H;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_TESTABILITY = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = PaintBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.buddy.paint;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -547,21 +542,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PaintBuddy/PaintBuddy.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = G42Z863W7H;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_TESTABILITY = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = PaintBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.buddy.paint;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 			};
 			name = Debug;

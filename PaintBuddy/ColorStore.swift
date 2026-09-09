@@ -382,6 +382,10 @@ final class ColorStore: ObservableObject {
             forKey: BuddySettingsKey.paintFloatingViewMode
         )
         UserDefaults.standard.set(
+            PaintColorSettings.minFloatingGridCellSize,
+            forKey: BuddySettingsKey.paintFloatingGridCellSize
+        )
+        UserDefaults.standard.set(
             PaintCopyFormat.hex.rawValue,
             forKey: BuddySettingsKey.paintCopyFormat
         )

@@ -11,7 +11,8 @@ enum PaintMarketingCaptureRunner {
     static func startIfNeeded(
         store: ColorStore,
         showPopover: @escaping () -> NSWindow?,
-        showFloatingPanel: @escaping () -> NSWindow?
+        showFloatingPanel: @escaping () -> NSWindow?,
+        showFloatingFavoritesPanel: @escaping () -> NSWindow?
     ) {
         guard BuddyMarketingCapture.isEnabled else { return }
 
@@ -37,6 +38,7 @@ enum PaintMarketingCaptureRunner {
 
                 try await captureMainScenes(store: store, window: window, out: out)
                 try await capturePalette(showFloatingPanel: showFloatingPanel, out: out)
+                try await captureFavorites(showFloatingFavoritesPanel: showFloatingFavoritesPanel, out: out)
                 try await captureFormats(store: store, out: out)
                 try await captureMenubar(showPopover: showPopover, out: out)
 
@@ -93,6 +95,21 @@ enum PaintMarketingCaptureRunner {
         BuddyMarketingCapture.stage("palette")
         await BuddyMarketingCapture.sleep(1.0)
         try BuddyMarketingCapture.captureWindow(panel, to: out.appendingPathComponent("palette.png"))
+        panel.orderOut(nil)
+    }
+
+    private static func captureFavorites(
+        showFloatingFavoritesPanel: @escaping () -> NSWindow?,
+        out: URL
+    ) async throws {
+        hostedWindow?.orderOut(nil)
+        await BuddyMarketingCapture.sleep(0.3)
+        guard let panel = showFloatingFavoritesPanel() else {
+            throw BuddyMarketingCapture.CaptureError.missingMainWindow
+        }
+        BuddyMarketingCapture.stage("favorites")
+        await BuddyMarketingCapture.sleep(1.0)
+        try BuddyMarketingCapture.captureWindow(panel, to: out.appendingPathComponent("favorites.png"))
         panel.orderOut(nil)
     }
 

@@ -32,9 +32,10 @@ Banner size: **1280×800**. Brand frame uses the Paint Buddy violet / lavender /
 
 | ID | Feature | Banner title (en) | Banner description (en) |
 |----|---------|-------------------|-------------------------|
-| history | Color history | Color history | Clipboard colors land in one tidy history you can search and copy. |
-| detail | Hex / RGB / RGBA | Copy any format | Hex, RGB, and RGBA — click a value to copy what you need. |
-| palette | Floating palette | Floating palette | Keep swatches always on top while you design or code. |
-| formats | Capture formats | Capture your way | Choose which formats to save and how copied colors are formatted. |
-| pick | Eyedropper result | Pick from screen | One-shot eyedropper — no Screen Recording permission needed. |
-| menubar | Menu bar | Menu bar ready | Recent colors stay one click away — pick, palette, and pause. |
+| history | History \| Favorites | History & Favorites | Clipboard colors land in History — switch to Favorites for pinned swatches. |
+| detail | Values + suggestions | Copy any channel | Hex, RGB, RGBA, and R/G/B/A chips — plus suggested relatives to try next. |
+| palette | Floating History | Floating History | Keep recent swatches always on top — grid, list, or detailed with channel chips. |
+| favorites | Floating Favorites | Floating Favorites | A second always-on panel just for starred colors you reuse all day. |
+| formats | Capture formats | Capture your way | Choose which formats to save and how copied colors are formatted — even hex without #. |
+| pick | Eyedropper result | Pick from screen | One-shot eyedropper into History or Favorites — no Screen Recording needed. |
+| menubar | Menu bar | Menu bar ready | Recent colors one click away — pick, History, Favorites, and pause. |

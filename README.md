@@ -13,8 +13,8 @@ open PaintBuddy.xcodeproj
 ## Features
 
 - Saves colors copied to the clipboard (hex, rgb, rgba, named, tuples)
-- Menu bar list, main window, and always-on-top floating palette
-- System Color Panel picker (no Screen Recording)
-- Configurable capture + copy formats
+- History + Favorites in the menu bar, main window, and dual always-on-top floating panels
+- One-shot eyedropper (no Screen Recording); per-channel copy and color suggestions
+- Configurable capture + preferred copy formats (including hex without #)
 
 See [MANIFEST.md](MANIFEST.md) and [FEATURES.md](FEATURES.md).

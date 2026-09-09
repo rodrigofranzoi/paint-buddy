@@ -11,4 +11,6 @@ Seed color history with:
 | #F59E0B | rgba(245, 158, 11, 1) | rgba | Clipboard |
 | #F43F5E | (244, 63, 94) | tuple | Clipboard |
 
-Floating palette should use grid layout. Settings capture opens Preferences (capture formats + copy format).
+Seed favorites with a subset (violet, emerald, tomato) so Floating Favorites and the Favorites segment look populated.
+
+Floating History / Favorites should use grid layout for marketing. Settings capture opens Preferences (capture formats + preferred copy format, including hex without #). Detail shot should show Values (channel chips) and Suggestions.

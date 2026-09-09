@@ -104,7 +104,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             PaintMarketingCaptureRunner.startIfNeeded(
                 store: store,
                 showPopover: { [weak self] in self?.showPopoverForCapture() },
-                showFloatingPanel: { [weak self] in self?.showFloatingPanelForCapture() }
+                showFloatingPanel: { [weak self] in self?.showFloatingPanelForCapture() },
+                showFloatingFavoritesPanel: { [weak self] in self?.showFloatingFavoritesPanelForCapture() }
             )
         } else {
             if PaintColorSettings.floatingPanelOnLaunch {
@@ -124,6 +125,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private func showFloatingPanelForCapture() -> NSWindow? {
         floatingPanel.show()
         return floatingPanel.panelWindow
+    }
+
+    @discardableResult
+    private func showFloatingFavoritesPanelForCapture() -> NSWindow? {
+        floatingFavoritesPanel.show()
+        return floatingFavoritesPanel.panelWindow
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
