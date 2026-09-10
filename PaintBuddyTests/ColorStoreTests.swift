@@ -111,6 +111,12 @@ final class ColorStoreTests: XCTestCase {
         XCTAssertTrue(suggestions.contains { $0.kind == .muted })
         let baseHex = EditorRedactionSettings.hex(from: color).uppercased()
         XCTAssertFalse(suggestions.contains { $0.hex.uppercased() == baseHex })
+        XCTAssertEqual(suggestions.map(\.id).count, Set(suggestions.map(\.id)).count)
+        // Near-white: lighter steps clamp to the same hex — IDs must still be unique.
+        let bright = PaintColorSuggestions.suggestions(
+            from: NSColor(srgbRed: 1, green: 0.4, blue: 0.47, alpha: 1)
+        )
+        XCTAssertEqual(bright.map(\.id).count, Set(bright.map(\.id)).count)
     }
 
     func testRGBAComponents() {

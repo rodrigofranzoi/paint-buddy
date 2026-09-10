@@ -61,7 +61,7 @@ enum PaintMarketingCaptureRunner {
             .buddyAppearance(brand: .paintBuddy)
         let hosting = NSHostingController(rootView: root)
         let window = NSWindow(contentViewController: hosting)
-        window.title = "Paint Buddy"
+        window.title = String(localized: "Paint Buddy")
         window.styleMask = [.titled, .closable, .miniaturizable, .resizable]
         window.setContentSize(NSSize(width: 1040, height: 680))
         window.center()
@@ -120,7 +120,7 @@ enum PaintMarketingCaptureRunner {
             .frame(minWidth: 620, minHeight: 560)
         let hosting = NSHostingController(rootView: root)
         let window = NSWindow(contentViewController: hosting)
-        window.title = "Settings"
+        window.title = String(localized: "Settings")
         window.styleMask = [.titled, .closable, .resizable]
         window.setContentSize(NSSize(width: 640, height: 600))
         window.center()

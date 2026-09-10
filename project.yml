@@ -4,6 +4,19 @@ options:
   deploymentTarget:
     macOS: "13.0"
   createIntermediateGroups: true
+  developmentLanguage: en
+  knownRegions:
+    - Base
+    - en
+    - nl
+    - pt
+    - es
+    - fr
+    - it
+    - ar
+    - zh
+    - ru
+    - ja
 settings:
   BASE_SDK: macosx
   SWIFT_VERSION: "5.9"
@@ -19,6 +32,8 @@ targets:
       - path: PaintBuddy
         excludes:
           - Resources/GoogleService-Info.plist
+      - path: PaintBuddy/Resources/GoogleService-Info.plist
+        buildPhase: resources
     resources:
       - path: PaintBuddy/Resources/Localizable.xcstrings
     dependencies:

@@ -12,6 +12,7 @@
 		2FD952E845139D3CBAACAB5B /* BuddyCore in Frameworks */ = {isa = PBXBuildFile; productRef = 1D2F15CFBE9DB394DE8FDCFF /* BuddyCore */; };
 		44811439BB6DA792F3F9A36C /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2597A4261226980E129E58F1 /* MenuBarView.swift */; };
 		45647D7FB9813E393C722F36 /* BuddyFirebase in Frameworks */ = {isa = PBXBuildFile; productRef = BDA702773DA9E8C3E211B829 /* BuddyFirebase */; };
+		5D1610BD33B6C69755CA728C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06BF8F4DFEB99909DB7DEC1B /* GoogleService-Info.plist */; };
 		6CF735771997396BEE9B2787 /* BuddyLocalization in Frameworks */ = {isa = PBXBuildFile; productRef = AC41B16345534C7DC6E22563 /* BuddyLocalization */; };
 		7D29BD48F0A6A6B4C7681AF8 /* ColorStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B02EB46DCD9343529F0898 /* ColorStore.swift */; };
 		8E1F5EE8E2F2DAB383E07216 /* BuddyUI in Frameworks */ = {isa = PBXBuildFile; productRef = D11D1B3C3BC2B5E1597E2880 /* BuddyUI */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06BF8F4DFEB99909DB7DEC1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2597A4261226980E129E58F1 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
 		38337E9A8D9C557CABB6AD10 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		562676BBE00952E1EFCF9577 /* FloatingHistoryPanelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingHistoryPanelController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 		2CE73B8C2E9A1339E24D6083 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				06BF8F4DFEB99909DB7DEC1B /* GoogleService-Info.plist */,
 				78219D60D16C0F484FC62495 /* Localizable.xcstrings */,
 			);
 			path = Resources;
@@ -250,7 +253,16 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
+				ar,
 				en,
+				es,
+				fr,
+				it,
+				ja,
+				nl,
+				pt,
+				ru,
+				zh,
 			);
 			mainGroup = 1A725EEAD7E9F9ADD7AA3333;
 			minimizedProjectReferenceProxies = 1;
@@ -275,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EA03EEE1335F069A269C977 /* Assets.xcassets in Resources */,
+				5D1610BD33B6C69755CA728C /* GoogleService-Info.plist in Resources */,
 				B53E5A8A12697D03DF45A191 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

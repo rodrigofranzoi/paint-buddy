@@ -2,6 +2,13 @@
 
 Supported locales: `en`, `nl`, `pt`, `es`, `fr`, `it`, `ar`, `zh`, `ru`, `ja`.
 
+## App Store Connect — naming (Guideline 5.2.5)
+
+**Use exactly:** `Paint Buddy`  
+**Do not use:** `Paint Buddy for Mac`, `… for macOS`, or any name that includes Apple product terms (`Mac`, `macOS`, `iPhone`, etc.).
+
+Binary display name (`CFBundleDisplayName` / `CFBundleName`) is already `Paint Buddy`. Keep App Store Connect **Name** and on-device name aligned — never append “for Mac”.
+
 ## Legal URLs (App Store Connect)
 
 - App Store ID: `6809586126`
@@ -24,6 +31,9 @@ Paint Buddy is a macOS menu-bar (agent) app. There is no Dock icon by default (L
 
 NO LOGIN / DEMO ACCOUNT REQUIRED.
 
+Launch at login: OFF by default. On first launch the app opens the main window and shows a consent popup (Not Now / Open at Login).
+It only registers as a Login Item if the user chooses Open at Login. Later launches stay menu-bar only. Change anytime in Settings → Preferences → Startup (Guideline 2.4.5(iii)).
+
 How to review:
 1. Launch the app. Look for the paintpalette icon in the macOS menu bar.
 2. Click the menu bar icon to open the recent-colors popover.
@@ -32,7 +42,7 @@ How to review:
 5. Open the main window: switch History | Favorites. Star a color, or add one with + (Color Picker + hex/rgba fields).
 6. Toggle Floating History and Floating Favorites (always-on-top). Try grid / list / detailed layouts and swatch size.
 7. In detailed floating rows or the main detail pane: copy preferred format, Hex, and R/G/B/A channel chips. Try Suggestions swatches.
-8. Settings (gear): capture formats, preferred copy format (incl. hex without #), history limits, Support → Rate, pause, launch at login, appearance / accent.
+8. Settings (gear): capture formats, preferred copy format (incl. hex without #), history limits, Support → Rate, pause, optional launch at login, appearance / accent.
 9. Pause from the menu bar, then resume. Clear history from Settings.
 
 Permissions / entitlements:

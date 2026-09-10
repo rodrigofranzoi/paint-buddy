@@ -43,7 +43,7 @@ struct DashboardView: View {
             VStack(spacing: BuddyTheme.Spacing.md) {
                 Picker(selection: $listMode) {
                     ForEach(DashboardListMode.allCases) { mode in
-                        Text(mode.title).tag(mode)
+                        Text(LocalizedStringKey(mode.title)).tag(mode)
                     }
                 } label: {
                     EmptyView()
@@ -58,8 +58,13 @@ struct DashboardView: View {
                         Image(systemName: listMode == .favorites ? "star" : "paintpalette")
                             .font(.title2)
                             .foregroundStyle(.secondary)
-                        Text(listMode == .favorites ? "No favorites yet" : "No colors yet")
-                            .foregroundStyle(.secondary)
+                        if listMode == .favorites {
+                            Text("No favorites yet")
+                                .foregroundStyle(.secondary)
+                        } else {
+                            Text("No colors yet")
+                                .foregroundStyle(.secondary)
+                        }
                         if listMode == .favorites {
                             Text("Pick a color, add one manually, or favorite from history")
                                 .font(.caption)
@@ -325,7 +330,11 @@ struct ColorDetailPane: View {
                                 .textSelection(.enabled)
                         }
                         LabeledContent("Source") {
-                            Text(item.source == .picker ? "Color Panel" : "Clipboard")
+                            if item.source == .picker {
+                                Text("Color Panel")
+                            } else {
+                                Text("Clipboard")
+                            }
                         }
                     }
                     .font(.buddyBody)
@@ -506,9 +515,9 @@ private struct SuggestionSwatch: View {
 
 /// Tappable color format value with a trailing copy button. Copy does not add to history.
 private struct CopyableColorValueRow: View {
-    let title: String
+    let title: LocalizedStringKey
     let value: String
-    var channels: [(label: String, value: String)] = []
+    var channels: [(label: LocalizedStringKey, value: String)] = []
     let onCopy: () -> Void
 
     @EnvironmentObject private var store: ColorStore
@@ -536,7 +545,7 @@ private struct CopyableColorValueRow: View {
                 }
                 .buttonStyle(.plain)
                 .help(valueJustCopied ? "Copied" : "Copy \(title)")
-                .accessibilityLabel("\(title) \(value)")
+                .accessibilityLabel(Text("\(title) \(value)"))
                 .accessibilityHint("Copies to clipboard")
                 .accessibilityValue(valueJustCopied ? "Copied" : "")
 
@@ -545,7 +554,7 @@ private struct CopyableColorValueRow: View {
                         .foregroundStyle(buttonJustCopied ? Color.green : Color.secondary)
                 }
                 .buttonStyle(.borderless)
-                .accessibilityLabel(buttonJustCopied ? "Copied" : "Copy \(title)")
+                .accessibilityLabel(buttonJustCopied ? Text("Copied") : Text("Copy \(title)"))
                 .help(buttonJustCopied ? "Copied" : "Copy to clipboard")
 
                 Spacer(minLength: 0)
@@ -555,7 +564,7 @@ private struct CopyableColorValueRow: View {
                 HStack(spacing: 6) {
                     Text("")
                         .frame(width: 56)
-                    ForEach(channels, id: \.label) { channel in
+                    ForEach(Array(channels.enumerated()), id: \.offset) { _, channel in
                         ChannelCopyChip(label: channel.label, value: channel.value) {
                             store.copyString(channel.value)
                         }
@@ -586,7 +595,7 @@ private struct CopyableColorValueRow: View {
 }
 
 private struct ChannelCopyChip: View {
-    let label: String
+    let label: LocalizedStringKey
     let value: String
     let onCopy: () -> Void
 
@@ -601,18 +610,21 @@ private struct ChannelCopyChip: View {
                 justCopied = false
             }
         } label: {
-            Text("\(label) \(value)")
-                .font(.caption.monospaced())
-                .padding(.horizontal, 6)
-                .padding(.vertical, 3)
-                .background(
-                    RoundedRectangle(cornerRadius: 4, style: .continuous)
-                        .fill(justCopied ? Color.green.opacity(0.45) : BuddyTheme.BuddyColor.border.opacity(0.25))
-                )
+            HStack(spacing: 4) {
+                Text(label)
+                Text(value)
+            }
+            .font(.caption.monospaced())
+            .padding(.horizontal, 6)
+            .padding(.vertical, 3)
+            .background(
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .fill(justCopied ? Color.green.opacity(0.45) : BuddyTheme.BuddyColor.border.opacity(0.25))
+            )
         }
         .buttonStyle(.plain)
         .help(justCopied ? "Copied" : "Copy \(label)")
-        .accessibilityLabel("Copy \(label) \(value)")
+        .accessibilityLabel(Text("Copy \(label) \(value)"))
         .accessibilityValue(justCopied ? "Copied" : "")
     }
 }

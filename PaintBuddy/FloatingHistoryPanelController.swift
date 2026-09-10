@@ -71,7 +71,9 @@ final class FloatingPalettePanelController {
             backing: .buffered,
             defer: false
         )
-        panel.title = kind == .history ? "Paint Buddy" : "Favorites"
+        panel.title = kind == .history
+            ? String(localized: "Paint Buddy")
+            : String(localized: "Favorites")
         panel.contentViewController = hosting
         panel.isFloatingPanel = true
         panel.level = .floating
@@ -143,12 +145,15 @@ struct FloatingPaletteView: View {
             header
             if visibleItems.isEmpty {
                 VStack(spacing: BuddyTheme.Spacing.sm) {
-                    Text(kind == .favorites ? "No favorites yet" : "Copy a color or pick one")
-                        .foregroundStyle(.secondary)
                     if kind == .favorites {
+                        Text("No favorites yet")
+                            .foregroundStyle(.secondary)
                         Text("Pick a color or add one manually")
                             .font(.caption)
                             .foregroundStyle(.tertiary)
+                    } else {
+                        Text("Copy a color or pick one")
+                            .foregroundStyle(.secondary)
                     }
                 }
                 .padding()
@@ -190,7 +195,7 @@ struct FloatingPaletteView: View {
     private var header: some View {
         VStack(alignment: .leading, spacing: BuddyTheme.Spacing.xs) {
             HStack(spacing: BuddyTheme.Spacing.xs) {
-                Text(kind.title)
+                Text(LocalizedStringKey(kind.title))
                     .font(.headline)
                     .lineLimit(1)
                 Spacer(minLength: 4)
@@ -484,7 +489,7 @@ struct FloatingPaletteView: View {
 }
 
 private struct FloatingChannelCopyChip: View {
-    let label: String
+    let label: LocalizedStringKey
     let value: String
     let onCopy: () -> Void
 
@@ -499,20 +504,23 @@ private struct FloatingChannelCopyChip: View {
                 justCopied = false
             }
         } label: {
-            Text("\(label) \(value)")
-                .font(.caption.monospaced())
-                .lineLimit(1)
-                .minimumScaleFactor(0.7)
-                .padding(.horizontal, 6)
-                .padding(.vertical, 3)
-                .background(
-                    RoundedRectangle(cornerRadius: 4, style: .continuous)
-                        .fill(justCopied ? Color.green.opacity(0.45) : BuddyTheme.BuddyColor.border.opacity(0.25))
-                )
+            HStack(spacing: 4) {
+                Text(label)
+                Text(value)
+            }
+            .font(.caption.monospaced())
+            .lineLimit(1)
+            .minimumScaleFactor(0.7)
+            .padding(.horizontal, 6)
+            .padding(.vertical, 3)
+            .background(
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .fill(justCopied ? Color.green.opacity(0.45) : BuddyTheme.BuddyColor.border.opacity(0.25))
+            )
         }
         .buttonStyle(.plain)
         .help(justCopied ? "Copied" : "Copy \(label)")
-        .accessibilityLabel("Copy \(label) \(value)")
+        .accessibilityLabel(Text("Copy \(label) \(value)"))
         .accessibilityValue(justCopied ? "Copied" : "")
     }
 }

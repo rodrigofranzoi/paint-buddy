@@ -14,7 +14,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private let colorPicker = ColorPickerController()
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        BuddyLaunchAtLogin.enableByDefaultOnFirstInstall()
         BuddyAppearanceSettings.applyAppKitAppearance()
         BuddyAppReviewPrompt.shared.recordLaunch()
 
@@ -111,7 +110,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             if PaintColorSettings.floatingPanelOnLaunch {
                 floatingPanel.show()
             }
-            BuddyMainWindow.hideOnLaunchIfNeeded()
+            BuddyMainWindow.presentFirstLaunchExperienceIfNeeded(
+                appDisplayName: BuddyBrand.paintBuddy.displayName
+            )
         }
     }
 
@@ -234,7 +235,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private func updateStatusIcon() {
         let paused = BuddyPauseController.shared.isPaused
         let name = paused ? "paintpalette.fill" : "paintpalette"
-        let description = paused ? "Paint Buddy (paused)" : "Paint Buddy"
+        let description = paused
+            ? String(localized: "Paint Buddy (paused)")
+            : String(localized: "Paint Buddy")
         statusItem?.button?.image = NSImage(systemSymbolName: name, accessibilityDescription: description)
         statusItem?.button?.appearsDisabled = paused
     }
