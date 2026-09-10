@@ -98,6 +98,16 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
 
+        NotificationCenter.default.addObserver(
+            forName: .buddyDismissMenuBarPopover,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            Task { @MainActor in
+                self?.closePopover()
+            }
+        }
+
         if BuddyMarketingCapture.isEnabled {
             NSApp.setActivationPolicy(.regular)
             PaintMarketingCaptureRunner.startIfNeeded(
@@ -107,7 +117,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 showFloatingFavoritesPanel: { [weak self] in self?.showFloatingFavoritesPanelForCapture() }
             )
         } else {
-            if PaintColorSettings.floatingPanelOnLaunch {
+            if PaintColorSettings.floatingPanelOnLaunch, !BuddyLaunchAtLogin.needsConsentPrompt {
                 floatingPanel.show()
             }
             BuddyMainWindow.presentFirstLaunchExperienceIfNeeded(

@@ -552,10 +552,10 @@ private struct CopyableColorValueRow: View {
                     HStack(spacing: 4) {
                         if valueJustCopied {
                             Image(systemName: "checkmark.circle.fill")
-                                .foregroundStyle(Color.green)
+                                .foregroundStyle(BuddyTheme.BuddyColor.success)
                         }
                         Text(value)
-                            .foregroundStyle(valueJustCopied ? Color.green : Color.primary)
+                            .foregroundStyle(valueJustCopied ? BuddyTheme.BuddyColor.success : Color.primary)
                             .lineLimit(1)
                     }
                     .contentShape(Rectangle())
@@ -568,7 +568,7 @@ private struct CopyableColorValueRow: View {
 
                 Button(action: copyButton) {
                     Image(systemName: buttonJustCopied ? "checkmark.circle.fill" : "doc.on.doc")
-                        .foregroundStyle(buttonJustCopied ? Color.green : Color.secondary)
+                        .foregroundStyle(buttonJustCopied ? BuddyTheme.BuddyColor.success : Color.secondary)
                 }
                 .buttonStyle(.borderless)
                 .accessibilityLabel(buttonJustCopied ? Text("Copied") : Text("Copy \(title)"))
@@ -636,7 +636,7 @@ private struct ChannelCopyChip: View {
             .padding(.vertical, 3)
             .background(
                 RoundedRectangle(cornerRadius: 4, style: .continuous)
-                    .fill(justCopied ? Color.green.opacity(0.45) : BuddyTheme.BuddyColor.border.opacity(0.25))
+                    .fill(justCopied ? BuddyTheme.BuddyColor.success.opacity(0.45) : BuddyTheme.BuddyColor.border.opacity(0.25))
             )
         }
         .buttonStyle(.plain)

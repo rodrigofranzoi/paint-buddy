@@ -388,7 +388,7 @@ struct FloatingPaletteView: View {
                         .font(.callout.monospaced())
                         .fontWeight(detailed && isHovered ? .bold : .regular)
                         .lineLimit(1)
-                        .foregroundStyle(copiedItemId == item.id ? Color.green : Color.primary)
+                        .foregroundStyle(copiedItemId == item.id ? BuddyTheme.BuddyColor.success : Color.primary)
                     Spacer(minLength: 0)
                 }
                 .contentShape(Rectangle())
@@ -515,7 +515,7 @@ private struct FloatingChannelCopyChip: View {
             .padding(.vertical, 3)
             .background(
                 RoundedRectangle(cornerRadius: 4, style: .continuous)
-                    .fill(justCopied ? Color.green.opacity(0.45) : BuddyTheme.BuddyColor.border.opacity(0.25))
+                    .fill(justCopied ? BuddyTheme.BuddyColor.success.opacity(0.35) : BuddyTheme.BuddyColor.border.opacity(0.25))
             )
         }
         .buttonStyle(.plain)

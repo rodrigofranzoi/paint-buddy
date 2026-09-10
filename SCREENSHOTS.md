@@ -11,6 +11,12 @@ Locales: `en`, `de`, `nl`, `pt`, `es`, `fr`, `it`, `ar`, `zh`, `ru`, `ja`.
 ## Capture real UI
 
 ```bash
+./scripts/generate-store-screenshots.sh
+```
+
+Or from the monorepo root:
+
+```bash
 # Builds Paint Buddy, seeds demo colors, captures every locale, then frames banners
 ./shared-buddy/scripts/marketing/capture_real_screenshots.sh paint
 
