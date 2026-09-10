@@ -30,9 +30,7 @@ struct SettingsView: View {
                 BuddyClearHistorySettingsSection(itemNoun: "colors") {
                     store.clearAllHistory()
                 }
-                Section("Startup") {
-                    BuddyLaunchAtLoginToggle()
-                }
+                BuddyStartupSettingsSection()
                 BuddyRateAppSettingsSection(brand: brand)
             case BuddySettingsItem.privacy.id:
                 BuddyLegalLinksSection(brand: brand)

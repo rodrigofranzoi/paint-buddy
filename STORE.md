@@ -1,6 +1,6 @@
 # Store Copy — Paint Buddy
 
-Supported locales: `en`, `nl`, `pt`, `es`, `fr`, `it`, `ar`, `zh`, `ru`, `ja`.
+Supported locales: `en`, `de`, `nl`, `pt`, `es`, `fr`, `it`, `ar`, `zh`, `ru`, `ja`.
 
 ## App Store Connect — naming (Guideline 5.2.5)
 
@@ -131,6 +131,25 @@ Open the main window to browse History or Favorites, copy Hex / RGB / RGBA or in
 Keep Floating History and Floating Favorites always on top while you design or code. Switch grid, list, or detailed layouts, resize swatches, and copy preferred formats — including hex without the #.
 
 Pause monitoring when you need privacy. Launch at login if you like. Rate the app from Settings when it helps your workflow. Colors stay on your Mac.
+
+---
+
+## German (`de`)
+
+**Name:** Paint Buddy  
+**Subtitle:** Farbhistorie & Favoriten  
+**Keywords:** Farbe,hex,rgb,rgba,Palette,Favoriten,Zwischenablage,Pipette,Designer,Entwickler  
+**Promotional Text:** Zwischenablage-Farben erfassen, Favoriten pinnen und duale schwebende Paletten oben halten — Hex, RGB, Kanäle & Vorschläge in der Menüleiste.
+
+**Description:**
+
+Paint Buddy überwacht Ihre Zwischenablage auf Farben — Hex, RGB, RGBA, benannte CSS-Farben und einfache Tupel — und hält eine übersichtliche Historie in der Menüleiste bereit.
+
+Öffnen Sie das Hauptfenster, um Historie oder Favoriten zu durchsuchen, Hex / RGB / RGBA oder einzelne R-, G-, B-, A-Kanäle zu kopieren und vorgeschlagene dunklere, hellere und Harmonie-Farben zu erkunden. Farben vom Bildschirm mit einer Einmal-Pipette aufnehmen (ohne Bildschirmaufzeichnung).
+
+Halten Sie schwebende Historie und schwebende Favoriten immer im Vordergrund, während Sie designen oder programmieren. Wechseln Sie zwischen Raster-, Listen- und Detailansicht, passen Sie Swatch-Größen an und kopieren Sie bevorzugte Formate — inklusive Hex ohne #.
+
+Pausieren Sie die Überwachung, wenn Sie Privatsphäre brauchen. Optionaler Start bei Anmeldung. Bewerten Sie die App in den Einstellungen, wenn sie Ihren Workflow unterstützt. Farben bleiben auf Ihrem Mac.
 
 ---
 

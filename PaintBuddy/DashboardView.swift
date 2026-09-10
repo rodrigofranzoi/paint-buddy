@@ -38,6 +38,19 @@ struct DashboardView: View {
         listMode == .favorites ? .favorites : .history
     }
 
+    /// Defer writes so List selection doesn't publish `ColorStore` during a view update.
+    private var listSelection: Binding<UUID?> {
+        Binding(
+            get: { store.selectedId },
+            set: { newValue in
+                guard store.selectedId != newValue else { return }
+                DispatchQueue.main.async {
+                    store.selectedId = newValue
+                }
+            }
+        )
+    }
+
     var body: some View {
         NavigationSplitView {
             VStack(spacing: BuddyTheme.Spacing.md) {
@@ -80,7 +93,7 @@ struct DashboardView: View {
                     .padding()
                 } else {
                     ScrollViewReader { proxy in
-                        List(listItems, selection: $store.selectedId) { item in
+                        List(listItems, selection: listSelection) { item in
                             ColorHistoryRow(item: item)
                                 .tag(item.id)
                                 .id(item.id)
@@ -194,14 +207,18 @@ struct DashboardView: View {
 
     private func focusList(on id: UUID?, proxy: ScrollViewProxy) {
         guard let id else { return }
+        let mode: DashboardListMode?
         if store.items.contains(where: { $0.id == id }) {
-            listMode = .history
+            mode = .history
         } else if store.favorites.contains(where: { $0.id == id }) {
-            listMode = .favorites
+            mode = .favorites
         } else {
             return
         }
         DispatchQueue.main.async {
+            if let mode, listMode != mode {
+                listMode = mode
+            }
             withAnimation(.easeInOut(duration: 0.2)) {
                 proxy.scrollTo(id, anchor: .center)
             }
@@ -394,7 +411,7 @@ private struct ContrastPreviewSwatch: View {
         .init(id: "cyan", label: "Cyan", color: Color(red: 0.20, green: 0.84, blue: 0.90)),
         .init(id: "magenta", label: "Magenta", color: Color(red: 1.0, green: 0.18, blue: 0.57)),
         .init(id: "yellow", label: "Yellow", color: Color(red: 1.0, green: 0.80, blue: 0.0)),
-        .init(id: "indigo", label: "Indigo", color: Color(red: 0.35, green: 0.34, blue: 0.84))
+        .init(id: "indigo", label: "Indigo", color: Color(red: 0.58, green: 0.45, blue: 0.98))
     ]
 
     @State private var isPinned = false

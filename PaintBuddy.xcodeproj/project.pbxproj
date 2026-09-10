@@ -228,8 +228,6 @@
 				2B9CD8848E57E24F9C093455 /* PBXTargetDependency */,
 			);
 			name = PaintBuddyUITests;
-			packageProductDependencies = (
-			);
 			productName = PaintBuddyUITests;
 			productReference = 5E6792EEFF5B78341D326E59 /* PaintBuddyUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -243,7 +241,17 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					5AF530524224DA09D327F31C = {
+						DevelopmentTeam = G42Z863W7H;
+						ProvisioningStyle = Automatic;
+					};
+					961CE8F4A3AE43568732996C = {
+						DevelopmentTeam = G42Z863W7H;
+						ProvisioningStyle = Automatic;
+					};
 					F48057AC529A801659C03E39 = {
+						DevelopmentTeam = G42Z863W7H;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 5AF530524224DA09D327F31C;
 					};
 				};
@@ -254,6 +262,7 @@
 			knownRegions = (
 				Base,
 				ar,
+				de,
 				en,
 				es,
 				fr,
@@ -267,7 +276,7 @@
 			mainGroup = 1A725EEAD7E9F9ADD7AA3333;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				147E681F2531CCA98A3AF6BF /* XCLocalSwiftPackageReference "Vendor/shared-buddy" */,
+				147E681F2531CCA98A3AF6BF /* XCLocalSwiftPackageReference "shared-buddy" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D83E97EF1E01DFD968DBFB4A /* Products */;
@@ -412,8 +421,10 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = G42Z863W7H;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -440,13 +451,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PaintBuddy/PaintBuddy.entitlements;
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = G42Z863W7H;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_TESTABILITY = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = PaintBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.buddy.paint;
 				SDKROOT = macosx;
 			};
@@ -520,8 +536,10 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = G42Z863W7H;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -555,13 +573,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PaintBuddy/PaintBuddy.entitlements;
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = G42Z863W7H;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_TESTABILITY = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = PaintBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.buddy.paint;
 				SDKROOT = macosx;
 			};
@@ -609,7 +632,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		147E681F2531CCA98A3AF6BF /* XCLocalSwiftPackageReference "Vendor/shared-buddy" */ = {
+		147E681F2531CCA98A3AF6BF /* XCLocalSwiftPackageReference "shared-buddy" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = "Vendor/shared-buddy";
 		};
