@@ -87,14 +87,16 @@ struct MenuBarView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
 
-            BuddyPauseControls(pause: pause)
+            BuddyMenuBarFooter {
+                BuddyPauseControls(pause: pause)
 
-            BuddyClearHistoryButton(itemNoun: "colors") {
-                store.clearAllHistory()
+                BuddyClearHistoryButton(itemNoun: "colors") {
+                    store.clearAllHistory()
+                }
+                .disabled(store.items.isEmpty)
+
+                BuddyMenuBarAppControls(appName: "Paint Buddy", brand: .paintBuddy)
             }
-            .disabled(store.items.isEmpty)
-
-            BuddyMenuBarAppControls(appName: "Paint Buddy", brand: .paintBuddy)
         }
         .frame(width: 300, height: 480)
         .accessibilityIdentifier("menubar")
